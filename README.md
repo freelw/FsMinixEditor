@@ -24,3 +24,10 @@ FsMinixEditor 是一个可以解析和制作minix1.0文件系统镜像的工具�
 	node minix_fs_editor.js -d release -o out.img
 	```
 	这里将out.img挂在到linux0.12的软驱上是可以被识别的
+	
+	3.帮助
+	
+	```
+	node minix_fs_editor.js -h
+	```
+	可以查看所有选项
