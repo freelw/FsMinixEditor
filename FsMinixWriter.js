@@ -150,7 +150,6 @@ FsMinixWriter.prototype.joinBuffer = function() {
     offset += this.log_zone_bitmap.length;
     this.inodes.sort((a, b) => { return a.index - b.index});
     for (let i = 0; i < this.inodes.length; ++ i) {
-        console.log('this.inodes[i].index : ', this.inodes[i].index);
         const inode_buffer = this.inodes[i].getMetaBuffer();
         inode_buffer.copy(this.buffer, offset);
         offset += inode_buffer.length;
@@ -209,14 +208,10 @@ function Inode(file_name, index, root_index, fsm) {
             this.buffer.writeInt16LE(index, offset);
             offset += 2;
             file_name = file_name.slice(0, 14);
-            console.log('index : ', index);
-            console.log('file_name : ', file_name);
             this.buffer.write(file_name, offset);
             offset += 14;
         });
     } else {
-        console.log('this.index : ', this.index);
-        console.log('this.file_name : ', this.file_name);
         this.buffer = fs.readFileSync(this.file_name);
         this.i_size = this.buffer.length;
     }
